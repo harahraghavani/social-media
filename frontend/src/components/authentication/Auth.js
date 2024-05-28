@@ -26,7 +26,14 @@ const Auth = ({ isSignup }) => {
 
     return (
         <Flex h="100vh" justifyContent="center" alignItems="center">
-            <Card minW={"330px"} p={4} rounded={"xl"} boxShadow={"inner"} border={"0.1px solid rgba(0, 0, 0, 0.3)"}>
+            <Card
+                minW={"330px"}
+                p={4}
+                rounded={"xl"}
+                boxShadow={"inner"}
+                border={"0.1px solid rgba(0, 0, 0, 0.6)"}
+                color={"black"}
+            >
                 <CardHeader py={4} px={0} textAlign="center">
                     <Heading size="lg">{isSignup ? "Sign Up" : "Login"}</Heading>
                 </CardHeader>
@@ -38,7 +45,9 @@ const Auth = ({ isSignup }) => {
                         label="Name"
                         register={register}
                         errors={errors}
-                        rules={{}}
+                        rules={{
+                            required: "This field is required",
+                        }}
                     />
                     <Box pt={4}>
                         <FormInput
@@ -63,7 +72,12 @@ const Auth = ({ isSignup }) => {
                         />
                     </Box>
                     <Box py={4} textAlign="center">
-                        <CommonButton type="submit" btnText={"Signup"} variant={"solid"} bgColor={"blue"} />
+                        <CommonButton
+                            type="submit"
+                            btnText={"Signup"}
+                            variant={"solid"}
+                            bgColor={"blue"}
+                        />
                     </Box>
                 </form>
             </Card>

@@ -16,12 +16,13 @@ const FormInput = ({
     register,
     type = "text",
     errors,
+    required = false
 }) => {
     const { ref: inputRef, ...rest } = register(name, rules);
     const [showPassword, setShowPassword] = useState(false);
 
     return (
-        <FormControl id={id} isInvalid={!!errors[name]}>
+        <FormControl id={id} isInvalid={!!errors[name]} isRequired={required}>
             <FormLabel htmlFor={id}>{label}</FormLabel>
             {type === "password" ? (
                 <InputGroup>
@@ -32,8 +33,20 @@ const FormInput = ({
                         isInvalid={!!errors[name]}
                         _active={!!errors[name] ? { borderColor: "red.400" } : ""}
                         border={"0.1px solid rgba(0, 0, 0, 0.2)"}
+                        required={required}
+                        boxShadow={"none"}
+                        sx={{
+                            "&:hover": {
+                                boxShadow: "none",
+                            },
+                            "&:focus": {
+                                boxShadow: "md",
+                            },
+                            "&:active": {
+                                boxShadow: "md",
+                            },
+                        }}
                         {...rest}
-
                     />
                     <InputRightElement width="4.5rem">
                         <IconButton
@@ -54,6 +67,18 @@ const FormInput = ({
                     isInvalid={!!errors[name]}
                     _active={!!errors[name] ? { borderColor: "red.400" } : ""}
                     border={"0.1px solid rgba(0, 0, 0, 0.2)"}
+                    boxShadow={"none"}
+                    sx={{
+                        "&:hover": {
+                            boxShadow: "none",
+                        },
+                        "&:focus": {
+                            boxShadow: "md",
+                        },
+                        "&:active": {
+                            boxShadow: "md",
+                        },
+                    }}
                     {...rest}
                 />
             )}
